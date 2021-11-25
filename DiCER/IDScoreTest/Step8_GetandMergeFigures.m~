@@ -1,0 +1,52 @@
+clc; clear all; close all;
+
+%Step 1: Set the path in
+Data_dir = ('/projects/kg98/Thapa/DiCER/1_ParametersProject/3_RunDiCER/9_PreAROMA_RegAROMADiCER/');
+
+%Step 2: Set the ID (enter all of the participant IDs here)
+subID = {'sub-GAB007'};%, 'sub-GAB009'};
+
+for i = 1:length(subID)
+    
+    %Step 3: Define conditions.
+    cond = {'Rest3'};
+    
+    for j = 1:length(cond)
+        
+        %Step 4: Define path to func directory.
+        %Regressed_dir = (['/projects/kg98/Thapa/DiCER/1_ParametersProject/3_RunDiCER/9_PreAROMA_RegAROMADiCER/',subID{i},'/AROMA_DiCERRegressed/']);
+        Regressed_dir = ([Data_dir gAROMADiCER/',subID{i},'/AROMA_DiCERRegressed/']);
+        
+        %Step 5: Define path to DiCER directory.
+        FuncConnect_dir = ([Regressed_dir, 'FunctionalConnectivity/']);
+        
+        %Step 6: Define images to plot.
+        img1 = imread([Regressed_dir,subID{i},'_AROMA_DiCERRegressed_CLUSTcarpet.png']);
+        img2 = imread([Regressed_dir,subID{i},'_AROMA_DiCERRegressed_CLUSTtissue_carpet.png']); 
+        img3 = imread([Regressed_dir,subID{i},'_AROMA_DiCERRegressed_randomcarpet.png']);
+        img4 = imread([Regressed_dir,subID{i},'_AROMA_DiCERRegressed_randomtissue_carpet.png']); 
+        img5 = imread([FuncConnect_dir,subID{i},'_task-',cond{j},'_FuncMatrix_Schaefer2018.png']); 
+        
+        %Step 7: Generate subsplots.
+        ax1 = subplot(3,2,1);
+        imshow(img1)
+        
+        ax2 = subplot(3,2,3);
+        imshow(img2)
+        
+        ax3 = subplot(3,2,2);
+        imshow(img3)
+        
+        ax4 = subplot(3,2,4);
+        imshow(img4)
+        
+        ax5 = subplot(3,2,5);
+        imshow(img5)
+      
+        %Step 7: Save subsplots.
+        saveas(gcf, ['/home/ttha0011/kg98/Thapa/DiCER/1_ParametersProject/3_RunDiCER/9_PreAROMA_RegAROMADiCER/sub-GAB007/Figures/',subID{i},'_',cond{j},'_merged'],'png');
+
+    end
+end
+
+       
