@@ -2,6 +2,4 @@
 
 #### This repository contains all scripts used for projects done during my time at BMS, Monash University.
 
-<p align="center">
-    	<img src="/Images/fMRI_TMS_EEG.JPG" width="300" height="300">
-</p>
+![TradeSignal](https://github.com/TribThapa/BMS_Collection/blob/main/Images/fMRI_TMS_EEG.JPG)
